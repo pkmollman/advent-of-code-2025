@@ -25,7 +25,9 @@ impl Result1 {
                     }
                 }
             }
-            _ => {}
+            _ => {
+                panic!("Bad dial direction: {}", dir)
+            }
         }
 
         if self.current_position == 0 {
