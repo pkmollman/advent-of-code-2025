@@ -1,10 +1,10 @@
-pub struct Result {
+pub struct PuzzleResult {
     pub current_position: i32,
     pub times_reached_0: i32,
     pub times_passed_0: i32,
 }
 
-impl Result {
+impl PuzzleResult {
     fn move_dial(&mut self, dir: char, amount: i32) {
         match dir {
             'L' => {
@@ -35,8 +35,8 @@ impl Result {
         }
     }
 
-    pub fn process_input(input: String, starting_value: i32) -> Result {
-        let mut result_data = Result {
+    pub fn process_input(input: String, starting_value: i32) -> PuzzleResult {
+        let mut result_data = PuzzleResult {
             current_position: starting_value,
             times_reached_0: 0,
             times_passed_0: 0,

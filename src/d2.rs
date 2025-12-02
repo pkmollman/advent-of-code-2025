@@ -1,6 +1,6 @@
 use rayon::prelude::*;
 
-pub struct Result {
+pub struct PuzzleResult {
     pub invalid_ids: Vec<i64>,
     pub invalid_ids_2: Vec<i64>,
 }
@@ -25,12 +25,13 @@ fn produces_invalid_id(s: &String, subs: String) -> bool {
     return true;
 }
 
-impl Result {
-    pub fn process_input(input: String) -> Result {
-        let mut result_data = Result {
+impl PuzzleResult {
+    pub fn process_input(input: String) -> PuzzleResult {
+        let mut result_data = PuzzleResult {
             invalid_ids: Vec::new(),
             invalid_ids_2: Vec::new(),
         };
+
         let line_with_ids = input
             .lines()
             .nth(0)
