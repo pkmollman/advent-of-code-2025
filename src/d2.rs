@@ -5,7 +5,7 @@ pub struct Result {
     pub invalid_ids_2: Vec<i64>,
 }
 
-fn is_invalid_id(s: &String, subs: String) -> bool {
+fn produces_invalid_id(s: &String, subs: String) -> bool {
     // if the substring can't fit into the parent evenly abort
     if s.chars().count() % subs.chars().count() != 0 {
         return false;
@@ -86,8 +86,6 @@ impl Result {
                         .collect();
                     if first_half == second_half {
                         return Some(x);
-                    } else {
-                        return None;
                     }
                 }
                 None
@@ -101,8 +99,10 @@ impl Result {
                 let id_string = x.to_string();
 
                 for cc in 1..=id_string.chars().count() / 2 {
-                    let found_invalid_combo =
-                        is_invalid_id(&id_string, id_string.chars().take(cc).collect::<String>());
+                    let found_invalid_combo = produces_invalid_id(
+                        &id_string,
+                        id_string.chars().take(cc).collect::<String>(),
+                    );
                     if found_invalid_combo {
                         return Some(x);
                     }
