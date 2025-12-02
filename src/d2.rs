@@ -1,3 +1,5 @@
+use rayon::prelude::*;
+
 pub struct Result {
     pub invalid_ids: Vec<i64>,
     pub invalid_ids_2: Vec<i64>,
@@ -33,6 +35,9 @@ impl Result {
             .lines()
             .nth(0)
             .expect("Could not parse a first line for puzzle input");
+
+        let mut all_potential_ids: Vec<i64> = Vec::new();
+
         for range_string in line_with_ids.split(",") {
             let mut start_string = String::new();
             let mut end_string = String::new();
@@ -59,9 +64,16 @@ impl Result {
                 .expect("could not parse end string to int");
 
             for id in start..=end {
-                let id_string = id.to_string();
+                all_potential_ids.push(id);
+            }
+        }
 
-                // handle part 1
+        // handle part 1
+        result_data.invalid_ids = all_potential_ids
+            .par_iter()
+            .filter_map(|&x| {
+                let id_string = x.to_string();
+
                 if id_string.chars().count() % 2 == 0 {
                     let first_half: String = id_string
                         .chars()
@@ -73,22 +85,32 @@ impl Result {
                         .take(id_string.chars().count() / 2)
                         .collect();
                     if first_half == second_half {
-                        result_data.invalid_ids.push(id);
+                        return Some(x);
+                    } else {
+                        return None;
+                    }
+                }
+                None
+            })
+            .collect();
+
+        // handle part 2
+        result_data.invalid_ids_2 = all_potential_ids
+            .par_iter()
+            .filter_map(|&x| {
+                let id_string = x.to_string();
+
+                for cc in 1..=id_string.chars().count() / 2 {
+                    let found_invalid_combo =
+                        is_invalid_id(&id_string, id_string.chars().take(cc).collect::<String>());
+                    if found_invalid_combo {
+                        return Some(x);
                     }
                 }
 
-                // handle part 2
-                let mut found_invalid_combo = false;
-                for cc in 1..=id_string.chars().count() / 2 {
-                    found_invalid_combo =
-                        is_invalid_id(&id_string, id_string.chars().take(cc).collect::<String>());
-                    if found_invalid_combo {
-                        result_data.invalid_ids_2.push(id);
-                        break;
-                    }
-                }
-            }
-        }
+                return None;
+            })
+            .collect();
         result_data
     }
 }
