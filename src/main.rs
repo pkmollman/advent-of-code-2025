@@ -16,4 +16,5 @@ fn main() {
     println!("==== DAY 2 ====");
     let day_2 = d2::Result::process_input(load_puzzle_input("2.txt"));
     println!("invalid IDs: {}", day_2.invalid_ids.iter().sum::<i64>());
+    println!("invalid IDs 2: {}", day_2.invalid_ids_2.iter().sum::<i64>());
 }
