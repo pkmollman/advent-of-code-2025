@@ -9,7 +9,11 @@ fn load_puzzle_input(file_name: &str) -> String {
 
 fn main() {
     println!("==== DAY 1 ====");
-    let day_1 = d1::Result1::process_input(load_puzzle_input("1.txt"), 50);
+    let day_1 = d1::Result::process_input(load_puzzle_input("1.txt"), 50);
     println!("times at zero: {}", day_1.times_reached_0);
     println!("times passed zero: {}", day_1.times_passed_0);
+
+    println!("==== DAY 2 ====");
+    let day_2 = d2::Result::process_input(load_puzzle_input("2.txt"));
+    println!("invalid IDs: {}", day_2.invalid_ids.iter().sum::<i64>());
 }
