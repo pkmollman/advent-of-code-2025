@@ -1,5 +1,5 @@
-pub mod d1;
-pub mod d2;
+mod d1;
+mod d2;
 
 use std::fs;
 
