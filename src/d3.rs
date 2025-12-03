@@ -1,5 +1,3 @@
-use std::collections::VecDeque;
-
 pub struct PuzzleResult {
     pub joltages: Vec<u64>,
     pub joltages_2: Vec<u64>,
