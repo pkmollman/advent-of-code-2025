@@ -19,5 +19,6 @@ fn main() {
     println!("invalid IDs 2: {}", day_2.invalid_ids_2.iter().sum::<i64>());
 
     let day_3 = d3::PuzzleResult::process_input(load_puzzle_input("3"));
-    println!("total joltage: {}", day_3.joltages.iter().sum::<u64>())
+    println!("total joltage: {}", day_3.joltages.iter().sum::<u64>());
+    println!("total joltage 2: {}", day_3.joltages_2.iter().sum::<u64>());
 }
