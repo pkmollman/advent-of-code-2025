@@ -43,14 +43,14 @@ impl PuzzleResult {
             let mut scan_index: usize = 0;
 
             for i in 0..12 {
-                let mut largest_in_remaining_front_slice: Vec<u64> = joltage_values
+                let mut remaining_front_slice: Vec<u64> = joltage_values
                     .iter()
                     .skip(scan_index)
                     .take(joltage_values.len() - scan_index - (12 - i) + 1)
                     .copied()
                     .collect();
-                largest_in_remaining_front_slice.sort();
-                found_values.push(largest_in_remaining_front_slice.last().unwrap().to_owned());
+                remaining_front_slice.sort();
+                found_values.push(remaining_front_slice.last().unwrap().to_owned());
                 for ia in scan_index..joltage_values.len() {
                     if &joltage_values[ia] == found_values.last().unwrap() {
                         scan_index = ia + 1;
