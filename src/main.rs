@@ -1,5 +1,6 @@
 mod d1;
 mod d2;
+mod d3;
 
 use std::fs;
 
@@ -16,4 +17,7 @@ fn main() {
     let day_2 = d2::PuzzleResult::process_input(load_puzzle_input("2"));
     println!("invalid IDs: {}", day_2.invalid_ids.iter().sum::<i64>());
     println!("invalid IDs 2: {}", day_2.invalid_ids_2.iter().sum::<i64>());
+
+    let day_3 = d3::PuzzleResult::process_input(load_puzzle_input("3"));
+    println!("total joltage: {}", day_3.joltages.iter().sum::<u64>())
 }
