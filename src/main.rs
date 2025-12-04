@@ -31,4 +31,8 @@ fn main() {
 
     let day_4 = d4::PuzzleResult::process_input(load_puzzle_input("4"));
     println!("accessible rolls: {}", day_4.accessible_rolls);
+    println!(
+        "recursive accessible rolls: {}",
+        day_4.recursive_accessible_rolls
+    );
 }
