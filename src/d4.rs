@@ -34,8 +34,8 @@ impl Grid {
     pub fn gather_rolls(&mut self) -> u64 {
         let mut gathered_rolls: u64 = 0;
         let mut rolls_to_gather: Vec<(isize, isize)> = Vec::new();
-        for y in 0..self.height() {
-            for x in 0..self.width() {
+        for x in 0..self.width() {
+            for y in 0..self.height() {
                 match self.get_cell(x, y) {
                     Some(c) => match c {
                         '@' => {
