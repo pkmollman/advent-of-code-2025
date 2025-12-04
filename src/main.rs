@@ -1,6 +1,7 @@
 mod d1;
 mod d2;
 mod d3;
+mod d4;
 
 use std::fs;
 
@@ -27,4 +28,7 @@ fn main() {
         "total joltage 12 batteries: {}",
         day_3.joltages_2.iter().sum::<u64>()
     );
+
+    let day_4 = d4::PuzzleResult::process_input(load_puzzle_input("4"));
+    println!("accessible rolls: {}", day_4.accessible_rolls);
 }
