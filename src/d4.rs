@@ -88,9 +88,9 @@ impl PuzzleResult {
 
         // part 1
         result.accessible_rolls = grid.gather_rolls();
-        result.recursive_accessible_rolls = result.accessible_rolls;
 
         //part 2
+        result.recursive_accessible_rolls = result.accessible_rolls;
         let mut returned_rolls: u64 = result.accessible_rolls;
         while returned_rolls > 0 {
             returned_rolls = grid.gather_rolls();
