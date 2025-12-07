@@ -2,6 +2,8 @@ mod d1;
 mod d2;
 mod d3;
 mod d4;
+mod d5;
+mod d6;
 
 use std::fs;
 
@@ -35,4 +37,8 @@ fn main() {
         "recursive accessible rolls: {}",
         day_4.recursive_accessible_rolls
     );
+
+    let day_6 = d6::PuzzleResult::process_input(load_puzzle_input("6e"));
+    println!("problem total: {}", day_6.column_results);
+    println!("problem total cepha: {}", day_6.column_results_2);
 }
